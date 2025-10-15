@@ -8,6 +8,7 @@ wb = load_workbook(excel_path)
 
 import pandas as pd
 
+
 def load_first_10_records(sheet_name):
     wb = load_workbook(excel_path, data_only=True)
     ws = wb[sheet_name]
@@ -15,7 +16,7 @@ def load_first_10_records(sheet_name):
     headers = data[0]
     rows = data[1:]
     df = pd.DataFrame(rows, columns=headers)
-    return df.tail(10)
+    return df.head(10)
 
 
 # Function to append data to a sheet
