@@ -40,7 +40,7 @@ if menu == "Patient Records":
     st.header("Add Patient Record")
     date = st.date_input("Date")
     name = st.text_input("Patient Name")
-    treatment = st.selectbox("Treatment", ["RCT", "Cleaning", "Extraction", "Other"})
+    treatment = st.selectbox("Treatment", ["RCT", "Cleaning", "Extraction", "Other"])
     amount = st.number_input("Amount Charged", min_value=0.0)
     payment = st.selectbox("Payment Method", ["Cash", "Card", "UPI", "Insurance"])
     contact = st.text_input("Contact Number")
