@@ -73,8 +73,40 @@ def append_to_sheet(sheet_name, data):
     if ws.protection.sheet:
         ws.protection.sheet = False
 
-    
-import pandas as pd
+
+
+if menu == "Patient Records":
+    # Existing form code...
+
+    st.subheader("Submitted Patient Records")
+    try:
+        df = load_sheet_data("Patient Records")
+        st.dataframe(df)
+    except Exception as e:
+        st.error(f"Could not load data: {e}")
+
+
+elif menu == "Clinic Expenses":
+    # Existing form code...
+
+    st.subheader("Submitted Clinic Expenses")
+    try:
+        df = load_sheet_data("Clinic Expenses")
+        st.dataframe(df)
+    except Exception as e:
+        st.error(f"Could not load data: {e}")
+
+
+elif menu == "Employee Salaries":
+    # Existing form code...
+
+    st.subheader("Submitted Employee Salaries")
+    try:
+        df = load_sheet_data("Employee Salaries")
+        st.dataframe(df)
+    except Exception as e:
+        st.error(f"Could not load data: {e}")
+
 
 def load_sheet_data(sheet_name):
     wb = load_workbook(excel_path)
@@ -84,19 +116,3 @@ def load_sheet_data(sheet_name):
     rows = data[1:]
     df = pd.DataFrame(rows, columns=headers)
     return df
-
-if menu == "Patient Records":
-    # Existing form code...
-
-    # Display submitted records
-    st.subheader("Submitted Patient Records")
-    try:
-        df = load_sheet_data("Patient Records")
-        st.dataframe(df)
-    except Exception as e:
-        st.error(f"Could not load data: {e}")
-
-    ws.append(data)
-
-    # Re-enable protection
-    ws.protection.sheet = True
