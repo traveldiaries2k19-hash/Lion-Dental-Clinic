@@ -61,3 +61,19 @@ elif menu == "Upcoming Appointments":
     if st.button("Submit Appointment"):
         append_to_sheet("Upcoming Appointments", [name, contact, treatment, date.strftime("%Y-%m-%d"), time])
         st.success("Appointment added successfully.")
+
+
+from openpyxl import load_workbook
+
+def append_to_sheet(sheet_name, data):
+    wb = load_workbook(excel_path)
+    ws = wb[sheet_name]
+
+    # Temporarily disable protection if needed (assuming no password)
+    if ws.protection.sheet:
+        ws.protection.sheet = False
+
+    ws.append(data)
+
+    # Re-enable protection
+    ws.protection.sheet = True
