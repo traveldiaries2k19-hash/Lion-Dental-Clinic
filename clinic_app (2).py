@@ -13,7 +13,7 @@ def append_to_sheet(sheet_name, data):
     wb.save(excel_path)
 
 # Streamlit UI
-st.title("Dental Clinic Data Entry Portal")
+st.title("Lion Dental Clinic And Implant Centre")
 menu = st.sidebar.selectbox("Select Data Type", ["Patient Records", "Clinic Expenses", "Employee Salaries", "Upcoming Appointments"])
 
 if menu == "Patient Records":
@@ -21,7 +21,7 @@ if menu == "Patient Records":
     date = st.date_input("Date")
     name = st.text_input("Patient Name")
     treatment = st.selectbox("Treatment", ["RCT", "Cleaning"])
-    amount = st.number_input("Amount Charged", min_value=0.0)
+    amount = st.number_input("Amount Charged", min_value=0)
     payment = st.selectbox("Payment Method", ["Cash", "Card", "UPI", "Insurance"])
     contact = st.text_input("Contact Number")
     notes = st.text_area("Special Notes")
