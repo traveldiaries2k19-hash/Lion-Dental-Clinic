@@ -9,7 +9,7 @@ wb = load_workbook(excel_path)
 import pandas as pd
 
 
-def load_first_10_records(sheet_name):
+def load_first_10_records(Patient Records):
     wb = load_workbook(excel_path, data_only=True)
     ws = wb[sheet_name]
     data = list(ws.values)
