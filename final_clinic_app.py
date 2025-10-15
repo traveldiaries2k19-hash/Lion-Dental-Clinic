@@ -8,24 +8,13 @@ wb = load_workbook(excel_path)
 
 import pandas as pd
 
-def load_first_10_records(sheet_name):
+
+def load_recent_10_records(sheet_name):
     wb = load_workbook(excel_path, data_only=True)
     ws = wb[sheet_name]
     data = list(ws.values)
     headers = data[0]
-    rows = data[1:]
-    df = pd.DataFrame(rows, columns=headers)
-    return df.head(10)
-
-
-import pandas as pd
-
-def load_last_10_records(sheet_name):
-    wb = load_workbook(excel_path, data_only=True)
-    ws = wb[sheet_name]
-    data = list(ws.values)
-    headers = data[0]
-    rows = data[1:]
+    rows = [row for row in data[1:] if any(cell not in [None, "", "Null"] for cell in row)]
     df = pd.DataFrame(rows, columns=headers)
     return df.tail(10)
 
