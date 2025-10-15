@@ -80,7 +80,7 @@ if menu == "Patient Records":
 
     st.subheader("Submitted Patient Records")
     try:
-        df = load_sheet_data("Patient Records")
+        df = Dental_Clinic_Template_Protected_Sheets.xlsx("Patient Records")
         st.dataframe(df)
     except Exception as e:
         st.error(f"Could not load data: {e}")
