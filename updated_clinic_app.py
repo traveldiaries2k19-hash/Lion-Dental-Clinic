@@ -8,7 +8,7 @@ wb = load_workbook(excel_path)
 
 import pandas as pd
 
-def load_last_10_records(sheet_name):
+def load_first_10_records(sheet_name):
     wb = load_workbook(excel_path, data_only=True)
     ws = wb[sheet_name]
     data = list(ws.values)
@@ -40,7 +40,7 @@ if menu == "Patient Records":
     st.header("Add Patient Record")
     date = st.date_input("Date")
     name = st.text_input("Patient Name")
-    treatment = st.text_input("Treatment")
+    treatment = st.selectbox("Treatment", ["RCT", "Cleaning", "Extraction", "Other"})
     amount = st.number_input("Amount Charged", min_value=0.0)
     payment = st.selectbox("Payment Method", ["Cash", "Card", "UPI", "Insurance"])
     contact = st.text_input("Contact Number")
@@ -54,7 +54,7 @@ elif menu == "Clinic Expenses":
 
     st.subheader("Last 10 Clinic Expenses")
     try:
-        df = load_last_10_records("Clinic Expenses")
+        df = load_first_10_records("Clinic Expenses")
         st.dataframe(df)
     except Exception as e:
         st.error(f"Error loading expenses: {e}")
