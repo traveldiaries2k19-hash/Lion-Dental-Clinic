@@ -65,9 +65,9 @@ elif menu == "Upcoming Appointments":
 
 from openpyxl import load_workbook
 
-def append_to_sheet(sheet_name, data):
-    wb = load_workbook(excel_path)
-    ws = wb[sheet_name]
+def append_to_sheet(Dental_Clinic_Template_Protected_Sheets, data):
+    wb = load_workbook(Dental_Clinic_Template_Protected_Sheets.xlsx)
+    ws = wb[Dental_Clinic_Template_Protected_Sheets]
 
     # Temporarily disable protection if needed (assuming no password)
     if ws.protection.sheet:
