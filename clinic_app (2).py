@@ -73,6 +73,29 @@ def append_to_sheet(sheet_name, data):
     if ws.protection.sheet:
         ws.protection.sheet = False
 
+    
+import pandas as pd
+
+def load_sheet_data(sheet_name):
+    wb = load_workbook(excel_path)
+    ws = wb[sheet_name]
+    data = list(ws.values)
+    headers = data[0]
+    rows = data[1:]
+    df = pd.DataFrame(rows, columns=headers)
+    return df
+
+if menu == "Patient Records":
+    # Existing form code...
+
+    # Display submitted records
+    st.subheader("Submitted Patient Records")
+    try:
+        df = load_sheet_data("Patient Records")
+        st.dataframe(df)
+    except Exception as e:
+        st.error(f"Could not load data: {e}")
+
     ws.append(data)
 
     # Re-enable protection
